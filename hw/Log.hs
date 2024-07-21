@@ -15,6 +15,12 @@ data LogMessage = LogMessage MessageType TimeStamp String
                 | Unknown String
   deriving (Show, Eq)
 
+getTimestamp :: LogMessage -> TimeStamp
+getTimestamp (LogMessage _ ts _) = ts
+
+getMessage :: LogMessage -> String
+getMessage (LogMessage _ _ msg) = msg
+
 data MessageTree = Leaf
                  | Node MessageTree LogMessage MessageTree
   deriving (Show, Eq)
